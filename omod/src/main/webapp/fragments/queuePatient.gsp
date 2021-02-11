@@ -1643,15 +1643,15 @@ a.tooltip span {
                         <div class="tasks">
                             <header class="tasks-header">
                                 <span id="summtitle1" class="tasks-title">Details</span>
-                                <input type="hidden" id="nhifNumber" name="person.attribute.34"/>
-                                <input type="hidden" id="studentId" name="person.attribute.42"/>
-                                <input type="hidden" id="waiverNumber" name="person.attribute.32"/>
+                                <input type="hidden" id="nhifNumber" name="nhifNumber"/>
+                                <input type="hidden" id="studentId" name="studentId"/>
+                                <input type="hidden" id="waiverNumber" name="waiverNumber"/>
                                 <a class="tasks-lists"></a>
                             </header>
                         </div>
 
                         <span id="universitydiv" class="select-arrow" style="width: 100%">
-                            <field><select style="width: 101%;" name="person.attribute.47"
+                            <field><select style="width: 101%;" name="university"
                                            id="university">&nbsp;</select></field>
                         </span>
 
