@@ -2,10 +2,13 @@ package org.openmrs.module.initialpatientqueueapp.page.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.Concept;
 import org.openmrs.Patient;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.hospitalcore.BillingService;
 import org.openmrs.module.hospitalcore.HospitalCoreService;
+import org.openmrs.module.hospitalcore.model.BillableService;
 import org.openmrs.module.hospitalcore.util.GlobalPropertyUtil;
 import org.openmrs.module.initialpatientqueueapp.InitialPatientQueueConstants;
 import org.openmrs.module.initialpatientqueueapp.model.PatientModel;
@@ -31,6 +34,7 @@ public class ShowPatientInfoPageController {
 	public void get(@RequestParam("patientId") Integer patientId,
 	        @RequestParam(value = "encounterId", required = false) Integer encounterId,
 	        @RequestParam(value = "payCategory", required = false) String payCategory,
+	        @RequestParam(value = "roomToVisit", required = false) Integer roomToVisit,
 	        @RequestParam(value = "visit", required = false) boolean visit, PageModel model) throws IOException,
 	        ParseException {
 		
@@ -74,24 +78,43 @@ public class ShowPatientInfoPageController {
 		model.addAttribute("gender", Context.getPatientService().getPatient(patientId).getGender());
 		model.addAttribute("previousVisit", lastVisitTime);
 		String payCat = "";
+		boolean paying = false;
 		if (payCategory.equals("1")) {
 			payCat = "PAYING";
+			paying = true;
 		} else if (payCategory.equals("2")) {
 			payCat = "NON-PAYING";
 		} else if (payCategory.equals("3")) {
 			payCat = "SPECIAL SCHEMES";
 		}
 		model.addAttribute("selectedPaymentCategory", payCat);
+		model.addAttribute("paying", paying);
+		Concept registrationFeesConcept = Context.getConceptService().getConcept(
+		    InitialPatientQueueConstants.CONCEPT_NAME_REGISTRATION_FEE);
+		Concept revisitFeeConcept = Context.getConceptService().getConcept(
+		    InitialPatientQueueConstants.CONCEPT_NAME_REVISIT_FEES);
+		Concept specialClinicFeeConcept = Context.getConceptService().getConcept(
+		    InitialPatientQueueConstants.CONCEPT_NAME_SPECIAL_CLINIC_FEES);
+		BillableService registrationFee = Context.getService(BillingService.class).getServiceByConceptId(
+		    registrationFeesConcept.getId());
+		BillableService revisitFees = Context.getService(BillingService.class).getServiceByConceptId(
+		    revisitFeeConcept.getId());
+		BillableService specialClinicFeesAmount = Context.getService(BillingService.class).getServiceByConceptId(
+		    specialClinicFeeConcept.getId());
+		
 		String WhatToBePaid = "";
+		String specialClinicFees = "";
 		if (!visit) {
 			//This a new patient and might be required to pay registration fees
-			WhatToBePaid = "Registration fees:		"
-			        + GlobalPropertyUtil.getString(InitialPatientQueueConstants.PROPERTY_INITIAL_REGISTRATION_FEE, "0.0");
+			WhatToBePaid = "Registration fees:		" + registrationFee.getPrice();
 		} else {
-			WhatToBePaid = "Revisit fees:		"
-			        + GlobalPropertyUtil.getString(InitialPatientQueueConstants.PROPERTY_REVISIT_REGISTRATION_FEE, "0.0");
+			WhatToBePaid = "Revisit fees:		" + revisitFees.getPrice();
+		}
+		if (roomToVisit != null && roomToVisit == 3) {
+			specialClinicFees = "Special Clinic fees:		" + specialClinicFeesAmount.getPrice();
 		}
 		model.addAttribute("WhatToBePaid", WhatToBePaid);
+		model.addAttribute("specialClinicFees", specialClinicFees);
 		
 	}
 	
