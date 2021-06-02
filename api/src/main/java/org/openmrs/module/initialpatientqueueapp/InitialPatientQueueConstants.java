@@ -22,11 +22,11 @@ public class InitialPatientQueueConstants {
 	
 	public static final String APP_PATIENT_OPD = MODULE_ID + ".opd";
 	
-	public static final String CONCEPT_NAME_TRIAGE = "TRIAGE";
+	public static final String CONCEPT_NAME_TRIAGE = "Triage Room";
 	
-	public static final String CONCEPT_NAME_OPD_WARD = "OPD WARD";
+	public static final String CONCEPT_NAME_OPD_WARD = "OPD Room";
 	
-	public static final String CONCEPT_NAME_SPECIAL_CLINIC = "SPECIAL CLINIC";
+	public static final String CONCEPT_NAME_SPECIAL_CLINIC = "Special Clinic";
 	
 	public static final String PROPERTY_ENCOUNTER_TYPE_REGINIT = MODULE_ID_EHR_CONFIGS + ".encounterType.init";
 	
@@ -34,13 +34,13 @@ public class InitialPatientQueueConstants {
 	
 	public static final String PROPERTY_LOCATION = MODULE_ID_EHR_CONFIGS + ".location";
 	
-	public static final String CONCEPT_NAME_PAYING_CATEGORY = "PAYING CATEGORY";
+	public static final String CONCEPT_NAME_PAYING_CATEGORY = "Paying";
 	
-	public static final String CONCEPT_NAME_SPECIAL_SCHEME = "SPECIAL SCHEME";
+	public static final String CONCEPT_NAME_SPECIAL_SCHEME = "Special Scheme";
 	
-	public static final String CONCEPT_NAME_NONPAYING_CATEGORY = "NON-PAYING CATEGORY";
+	public static final String CONCEPT_NAME_NONPAYING_CATEGORY = "Non Paying";
 	
-	public static final String CONCEPT_NAME_LIST_OF_UNIVERSITIES = "LIST OF UNIVERSITIES";
+	public static final String CONCEPT_NAME_LIST_OF_UNIVERSITIES = "Education institution";
 	
 	public static final String PROPERTY_INITIAL_REGISTRATION_FEE = MODULE_ID_EHR_CONFIGS + ".initialVisitRegistrationFee";
 	
@@ -59,7 +59,7 @@ public class InitialPatientQueueConstants {
 	
 	public static final String FORM_FIELD_PAYMENT_CATEGORY = "person.attribute.14";
 	
-	public static final String CONCEPT_NEW_PATIENT = "New Patient";
+	public static final String CONCEPT_NEW_PATIENT = "New client";
 	
 	public static final String PROPERTY_IDENTIFIER_PREFIX = MODULE_ID + ".identifier_prefix";
 	
@@ -75,11 +75,11 @@ public class InitialPatientQueueConstants {
 	
 	public static final String CONCEPT_NAME_PATIENT_REFERRED_FROM = "PATIENT REFERRED FROM";
 	
-	public static final String CONCEPT_NAME_REGISTRATION_FEE = "REGISTRATION FEE";
+	public static final String CONCEPT_NAME_REGISTRATION_FEE = "Registration Fee";
 	
-	public static final String CONCEPT_NAME_REVISIT_FEES = "Revisit fees";
+	public static final String CONCEPT_NAME_REVISIT_FEES = "Revisit Fee";
 	
-	public static final String CONCEPT_NAME_SPECIAL_CLINIC_FEES = "special clinic fees";
+	public static final String CONCEPT_NAME_SPECIAL_CLINIC_FEES = "430fc46d-94bb-4fbc-b7bd-894b7cc98058";
 	
 	public static final String CONCEPT_NAME_PATIENT_REFERRED_TO_HOSPITAL = "PATIENT REFERRED TO HOSPITAL?";
 	
@@ -91,7 +91,7 @@ public class InitialPatientQueueConstants {
 	
 	public static final String FORM_FIELD_PATIENT_MLC = "patient.mlc";
 	
-	public static final String CONCEPT_REVISIT = "Revisit";
+	public static final String CONCEPT_REVISIT = "Revisit Patient";
 	
 	public static final String FORM_FIELD_SELECTED_PAYMENT_CATEGORY = "patient.selectedPaymentCategory";
 	
